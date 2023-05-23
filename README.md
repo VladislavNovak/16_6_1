@@ -15,24 +15,28 @@
 
 [Ограничить double двумя знаками после десятичной точки в C++](https://www.techiedelight.com/ru/restrict-a-float-to-two-places-after-the-decimal-point-in-cpp/)
 
-### Интересное:
+### LIB + snippets:
 
-```C++
-#include <cmath> // round
-// Возвращает введенную пользователем double с двойной точностью
-double getUserDouble() {
-    double input;
+| LIB                 | Ver | return | Смысл                                                            | last mod | prev mod |
+|---------------------|-----|--------|------------------------------------------------------------------|----------|----------|
+| isIncludes          | 1.1 | bool   | Получаем true если элемент хоть раз встречается в диапазоне      | 16_6_1   | 16_6_4   |
+| getUserChar         | 1.1 | T      | Диалог в пользователем. Получаем символ в обозначенном диапазоне | 16_6_1   | 16_6_4   |
+| getUserInput        | 2.0 | string | Диалог с пользователем. Получаем слово                           | 16_6_5   | 16_6_4   |
+| getRandomIntInRange | 1.0 | int    | RANDOM. Получить число в диапазоне                               | 16_6_5   |          |
 
-    cout << "Enter speed increment/decrement: ";
-    // Пока не будет введено нормальное число, выполняем цикл
-    while (!(std::cin >> input)) {
-        cout << "Error. Enter a number: ";
-        // Сбрасываем коматозное состояние cin
-        std::cin.clear();
-        // Очищаем поток ввода
-        fflush(stdin);
-    }
+| snippets          | Ver | depends      | return | Смысл                                                          | last mod | prev mod |
+|-------------------|-----|--------------|--------|----------------------------------------------------------------|----------|----------|
+| getJoinRange      | 0.1 |              | string | Добавляет запятую между символами переданной строки            | 16_6_5   |          |
+| hasDialogYesNo    | 0.2 | isIncludes   | bool   | Диалог с пользователем. Позволяет вводить лишь да/нет          | 16_6_1   | 16_6_5   |
+| getUserChoiceFrom | 0.1 | getUserInput | string | Диалог с пользователем. Получаем слово с уникальными символами | 16_6_5   |          |
+| getUserDouble     | 0.1 |              | double | Диалог с пользователем. Получает число double                  | 16_6_1   |          |
 
-    return round(input * 100) / 100;
-}
-```
+| enum                    | Ver | depends           | return | Смысл                                          | last mod |
+|-------------------------|-----|-------------------|--------|------------------------------------------------|----------|
+| getTogglePosition       | 0.1 |                   | int    | Возвращает занимаемую позицию в enum           | 16_6_5   |
+| getTogglePositionAsChar | 0.1 | getTogglePosition | char   | Возвращает занимаемую позицию в enum           | 16_6_5   |
+| changeToggle            | 0.1 |                   |        | Меняет флаг указанного бита                    | 16_6_5   |
+| resetAllToggles         | 0.1 | changeToggle      |        | Сбрасывает все флаги                           | 16_6_5   |
+| hasToggleFlag           | 0.1 |                   | bool   | Получить состояние указанного бита             | 16_6_5   |
+| getToggleInfo           | 0.1 | hasToggleFlag     | string | Получить отчет о бите в строковом аналоге JSON | 16_6_5   |
+| enumToString            | 0.1 |                   | string | Преобразовывает enum в соответствующий name    | 16_6_4   |
